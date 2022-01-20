@@ -8,6 +8,18 @@
   </div>
 </section>
 
+
+<% if @user.errors.any? %>
+  <div class="notification is-danger">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this object from being saved: not successfully</h2>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <section class="section">
   <div class="container">
     <div class="columns is-centered">
@@ -20,7 +32,7 @@
 
           <div class="field">
             <%= f.label :email, "メールアドレス", class: "label" %>
-            <%= f.email_field :email, class: "input" %> 
+            <%= f.email_field :email, class: "input" %>
           </div>
 
           <div class="field">
